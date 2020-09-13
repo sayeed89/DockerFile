@@ -1,0 +1,23 @@
+FROM centos:6.10
+
+MAINTAINER sayeed ahmed
+
+ENV JAVA_HOME="/usr"
+
+RUN yum update -y && yum install -y unzip && yum install -y java-1.8.0-openjdk
+
+ADD http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.57/bin/apache-tomcat-8.5.57.zip /opt/
+
+RUN unzip /opt/apache-tomcat-8.5.57.zip -d /opt/ && rm -f /opt/apache-tomcat-8.5.57.zip
+
+ADD https://tomcat.apache.org/tomcat-9.0-doc/appdev/sample/sample.war /opt/apache-tomcat-8.5.57/webapps/
+
+RUN chmod 744 /opt/apache-tomcat-8.5.57/webapps/sample.war && chmod 744 /opt/apache-tomcat-8.5.57/bin/*
+
+VOLUME [ "/cradius-data-local/" ]
+
+WORKDIR /opt
+
+EXPOSE 8080
+
+ENTRYPOINT ["/opt/apache-tomcat-8.5.57/bin/startup.sh"]

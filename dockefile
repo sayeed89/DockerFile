@@ -14,7 +14,7 @@ ADD https://tomcat.apache.org/tomcat-9.0-doc/appdev/sample/sample.war /opt/apach
 
 RUN chmod 744 /opt/apache-tomcat-8.5.57/webapps/sample.war && chmod 744 /opt/apache-tomcat-8.5.57/bin/*
 
-VOLUME [ "/cradius-data-local/" ]
+VOLUME ["/cradius-data-local/"]
 
 WORKDIR /opt
 

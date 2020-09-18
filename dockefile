@@ -20,4 +20,4 @@ WORKDIR /opt
 
 EXPOSE 8080
 
-ENTRYPOINT ["/opt/apache-tomcat-8.5.57/bin/startup.sh"]
+ENTRYPOINT ["/opt/apache-tomcat-8.5.57/bin/catalina.sh", "run"]
